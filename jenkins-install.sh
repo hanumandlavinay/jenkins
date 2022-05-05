@@ -32,7 +32,7 @@ install()
 		echo "---------------------------------------------------------------------"
        	        echo "Insatlling java"
 		echo "---------------------------------------------------------------------"
-       	        sudo yum install java-1.8* &>/dev/null
+       	        sudo yum install -y java-1.8* &>/dev/null
 		echo -e "\e[33m**********java is successfully installed************\e[0m"
          fi
   mvn --version
@@ -46,9 +46,11 @@ install()
 	echo "---------------------------------------------------------------------"
   	cd /opt/ 
 	echo "Downloading apache maven package"
-  	sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz &>/dev/null
+	sudo yum install -y wget
+	sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz &>/dev/null
+  	#sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
 	echo "Unzipping apache-maven"
- 	sudo tar -xvzf apache-maven-3.8.4-bin.tar.gz &>/dev/null
+ 	sudo tar -xvzf apache-maven-3.8.5-bin.tar.gz &>/dev/null
   	if [[ $? -eq 0 ]]
   	then
 		echo -e  "\e[33mMaven is successfully installed\e[0m"
@@ -112,7 +114,7 @@ uninstall()
 
 {
 	echo "-----------Uninstalling Jenkins-------------"
-	sudo yum remove jenkins -y
+	sudo yum remove jenkins -y &>/dev/null
         sudo systemctl status jenkins | grep active
 	echo "Jenkins uninstalled"
 
