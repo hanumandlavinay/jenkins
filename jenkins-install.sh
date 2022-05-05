@@ -103,6 +103,10 @@ install()
   fi
   myip=$(dig +short myip.opendns.com @resolver1.opendns.com)
   echo -e "\e[33mJenkins server is started and you can login by using below link\e[0m\n$myip:8080"
+  echo "________________________________________________________________________________________"
+  echo "Use the below password as an administrator password while getting started with jenkins"
+  echo "________________________________________________________________________________________"
+  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 }
 
